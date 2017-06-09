@@ -1,0 +1,8 @@
+<div class="director">
+  <% nested_form_for director do |director_form| %>
+  <p>
+    Director: <%= director_form.text_field :name %>
+    <%= director_form.link_to_remove "remove", :class => "director" %>
+  </p>
+  <% end %>
+</div>

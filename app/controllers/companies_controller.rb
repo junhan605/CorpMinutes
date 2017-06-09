@@ -16,6 +16,7 @@ class CompaniesController < ApplicationController
   def new
     @company = Company.new
     @company.users = Array[current_user]
+    @company.directors.build
   end
 
   # GET /companies/1/edit
@@ -44,8 +45,11 @@ class CompaniesController < ApplicationController
   # PATCH/PUT /companies/1
   # PATCH/PUT /companies/1.json
   def update
+    params[:company][:existing_director_attributes] ||= {}
+    @company = Comapny.find(params[:id])
+
     respond_to do |format|
-      if @company.update(company_params)
+      if @company.update_attributes(company_params)
         format.html { redirect_to @company, notice: 'Company was successfully updated.' }
         format.json { render :show, status: :ok, location: @company }
       else
@@ -83,6 +87,6 @@ class CompaniesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def company_params
-      params.require(:company).permit(:name, :state, :president, :treasure, :secretary ,user_ids: [])
+      params.require(:company).permit(:name, :state, :president, :treasure, :secretary ,user_ids: [], director_ids: [])
     end
 end
