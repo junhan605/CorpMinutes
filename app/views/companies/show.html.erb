@@ -6,9 +6,25 @@
 </p>
 
 <p>
-  <strong>Email:</strong>
-  <%= @company.email %>
+  <strong>State:</strong>
+  <%= @company.state %>
 </p>
+
+<p>
+  <strong>President:</strong>
+  <%= @company.president %>
+</p>
+
+<p>
+  <strong>Treasure:</strong>
+  <%= @company.treasure %>
+</p>
+
+<p>
+  <strong>Secretary:</strong>
+  <%= @company.secretary %>
+</p>
+
 
 <%= link_to 'Edit', edit_company_path(@company) %> |
 <%= link_to 'Back', companies_path %>

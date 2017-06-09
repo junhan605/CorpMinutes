@@ -15,6 +15,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'inherited_resources', github: 'activeadmin/inherited_resources'
 gem 'activeadmin', '~> 1.0.0.pre4'
 
+gem 'bootstrap-form'
+
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'binding_of_caller'
