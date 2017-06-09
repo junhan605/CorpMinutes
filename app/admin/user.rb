@@ -99,6 +99,7 @@ ActiveAdmin.register User do
   end
 
   after_create do |user|
+    AdminMailer.user_created(comment.id).deliver
     # AdminMailer.new_user_waiting_for_approval(self).deliver
     # mail(to: user.email, subject: "Account was created for you", contents: user.password)
     # RegistrationMailer.welcome(user, user.password).deliver
