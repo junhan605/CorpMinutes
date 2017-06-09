@@ -1,5 +1,7 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
+import { StyleSheet } from 'react-native';
+
+export default StyleSheet.create({
+  // * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
  *
  * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
@@ -12,10 +14,10 @@
  *
  *= require_tree .
  *= require_self
- */
- .mail-body {
- 	font-weight: bold;
- 	font-size: 1em;
- 	line-height: 1.2em;
- 	font-family: georgia,times,serif;
- }
+  'mail-body': {
+    fontWeight: 'bold',
+    fontSize: [{ unit: 'em', value: 1 }],
+    lineHeight: [{ unit: 'em', value: 1.2 }],
+    fontFamily: 'georgia,times,serif'
+  }
+});
