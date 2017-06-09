@@ -16,6 +16,7 @@ gem 'inherited_resources', github: 'activeadmin/inherited_resources'
 gem 'activeadmin', '~> 1.0.0.pre4'
 
 gem 'bootstrap-form'
+gem 'nested_form'
 
 group :development, :test do
   gem 'byebug', platform: :mri
