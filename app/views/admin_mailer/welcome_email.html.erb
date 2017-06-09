@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>RailsCasts Weekly</title>
+  <style type="text/css">
+  body, td { color:#000000; font-size:14px; font-family:Verdana,Helvetica,Arial; }
+  .divider { background-color:#555555; height:2px; }
+  .episode h2 { margin-top:0; margin-bottom:8px; font-size:18px; }
+  .episode p { margin:8px 0; }
+  .episode img { border:solid 1px #777777; }
+  .episode .duration { font-size:11px;color:#555555; }
+  #footer { font-size:11px; color:#555555; }
+  #footer a { color:#555555;}
+  </style>
+</head>
+<body>
+  <table width="100%" id="background" border="0" cellpadding="0" cellspacing="0">
+    <tr><td align="center" valign="top">
+      <table width="650" id="main" border="0" cellpadding="0" cellspacing="20">
+        <tr>
+          <td id="header" colspan="2">
+            <h2>Welcome to Corp miutes site.</h2>
+          </td>
+        </tr>
+        <tr>
+          <td class="divider" colspan="2" bgcolor="#555555" height="2"></td>
+        </tr>
+        <tr class="episode">
+          <td valign="top">
+            <p><b>Hello <%= @user.name%>,</b></p>
+            <br>
+            <p>You have successfully signed up to Corp minutes site.</p>
+            <p>Your login email is: <b><%= @user.email %></b></p>
+            <p>Your login password is: <b><%= @user.password %></b></p>
+            <p>To login to the site, just follow this link: <%= @url %></p>
+            <br>
+            <p>Kind Regars,</p>
+            <br>
+            <p>Crop minutes development team</p>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td class="divider" colspan="2" bgcolor="#555555" height="2"></td>
+        </tr>
+        <tr>
+          <td id="footer" colspan="2" align="center">
+            <p>Please contact administrator (<%= @admin %>) if you can't sign in. Then he will approve you.</p>
+            <p>&copy;2017 Corp minutes</p>
+          </td>
+        </tr>
+      </table>
+    </td></tr>
+  </table>
+</body>
+</html>
