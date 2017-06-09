@@ -16,6 +16,9 @@ ActiveAdmin.register User do
 
   index do
     column :name
+    column :companies do |resource|
+      "( #{resource.companies.count} )"
+    end
     column :email
 
     actions name: "Approve", defaults: false do |resource|
