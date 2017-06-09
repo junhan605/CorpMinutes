@@ -4,7 +4,7 @@ class CompaniesController < ApplicationController
   # GET /companies
   # GET /companies.json
   def index
-    @companies = Company.all
+    @companies = current_user.companies
   end
 
   # GET /companies/1
@@ -15,6 +15,7 @@ class CompaniesController < ApplicationController
   # GET /companies/new
   def new
     @company = Company.new
+    @company.users = Array[current_user]
   end
 
   # GET /companies/1/edit
@@ -25,6 +26,9 @@ class CompaniesController < ApplicationController
   # POST /companies.json
   def create
     @company = Company.new(company_params)
+    if company_params[:user_ids] == nil
+      @company.users = Array[current_user]
+    end
 
     respond_to do |format|
       if @company.save
@@ -69,6 +73,6 @@ class CompaniesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def company_params
-      params.require(:company).permit(:name, :no_of_company, :email)
+      params.require(:company).permit(:name, :no_of_company, :email, user_ids: [])
     end
 end
