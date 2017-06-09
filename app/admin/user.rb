@@ -77,7 +77,10 @@ ActiveAdmin.register User do
     end
 
     def approve
-      resource.update_attributes! approved: true
+      if resource.approved == nil || resource.approved == false
+        resource.update_attributes! approved: true
+        AdminMailer.approve_email(resource).deliver
+      end
       redirect_to admin_users_path
     end
   end
@@ -88,6 +91,9 @@ ActiveAdmin.register User do
   end
 
   after_create do |user|
-    AdminMailer.welcome_email(user).deliver
+    AdminMailer.invite_email(user).deliver
+    if user.approved?
+      AdminMailer.approve_email(resource).deliver
+    end
   end
 end
