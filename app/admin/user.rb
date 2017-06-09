@@ -12,15 +12,19 @@ ActiveAdmin.register User do
 #   permitted
 # end
 
-  permit_params :email, :name, :password, :password_confirmation, :suspend, :approved, companies: [], company_ids: []
+  permit_params :email, :name, :password, :password_confirmation, :no_of_company,:suspend, :approved, companies: [], company_ids: []
 
   index do
     column :name
     column :companies do |resource|
-      "( #{resource.companies.count} )"
+      if resource.no_of_company == nil
+        "( 0 )"
+      else
+        "( #{resource.no_of_company} )"
+      end
     end
+    # column :no_of_company
     column :email
-
     actions name: "Approve", defaults: false do |resource|
       if resource.approved?
         "Approved"
@@ -57,11 +61,12 @@ ActiveAdmin.register User do
     f.inputs 'User' do
       f.input :name
       f.input :email
+      f.input :no_of_company
       # f.input :password
       # f.input :password_confirmation
       f.input :approved
       f.input :suspend
-      f.input :companies, :as => :check_boxes
+      # f.input :companies, :as => :check_boxes
     end
 
     f.actions
