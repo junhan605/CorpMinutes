@@ -27,17 +27,6 @@ ActiveAdmin.register User do
       end
     end
 
-    # column :approved do |resource|
-    #   if resource.approved == false
-    #     link_to("Approve",
-    #       approve_admin_user_path(resource),
-    #       remote: true, method: :post
-    #     )
-    #   else
-    #     resource.approved
-    #   end
-    # end
-
     actions name: "Suspend", defaults: false do |resource|
       params = { user_id: resource.id }
       link_to(resource.suspend ? "Active" : "Suspend",
@@ -100,8 +89,5 @@ ActiveAdmin.register User do
 
   after_create do |user|
     AdminMailer.welcome_email(user).deliver
-    # AdminMailer.new_user_waiting_for_approval(self).deliver
-    # mail(to: user.email, subject: "Account was created for you", contents: user.password)
-    # RegistrationMailer.welcome(user, user.password).deliver
   end
 end

@@ -3,6 +3,6 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   resources :companies
   root to: 'visitors#index'
-  devise_for :users
+  devise_for :users, :controllers => {:registrations => "registrations"}
   resources :users
 end
