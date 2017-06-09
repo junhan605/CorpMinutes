@@ -1,11 +1,9 @@
-
+<% index = 0 %>
 <div id="directors">
-  <% index = 0 %>
-  <%= f.fields_for :directors do |director| %>
+  <%= f.fields_for :directors do |director_form| %>
     <% index = index + 1 %>
-    <%= director.label "Director #{index}" %>
-    <%= director.text_field :name %>
-    <%= director.link_to_remove "remove" %>
+    <%= render :partial => 'director', :locals => { :f => f, :director_form => director_form, :index => index } %>
   <% end %>
 </div>
-<p><%= f.link_to_add "more directors >>", :directors, :class => "directors" %></p>
+
+<p><%= f.link_to_add "more directors >>", :directors, :class => 'directors' %></p>
