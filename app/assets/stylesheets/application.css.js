@@ -14,6 +14,7 @@ export default StyleSheet.create({
  *
  *= require_tree .
  *= require_self
+ *= require_directory .
   'mail-body': {
     fontWeight: 'bold',
     fontSize: [{ unit: 'em', value: 1 }],

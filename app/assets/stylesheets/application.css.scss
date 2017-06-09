@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require_self
+ *= require_directory .
  */
  .mail-body {
  	font-weight: bold;
