@@ -1,5 +1,5 @@
 class CompaniesController < ApplicationController
-  before_action :set_company, only: [:show, :edit, :update, :destroy]
+  before_action :set_company, only: [:show, :edit, :update, :destroy, :show_minutes]
 
   # GET /companies
   # GET /companies.json
@@ -63,6 +63,16 @@ class CompaniesController < ApplicationController
       format.html { redirect_to companies_url, notice: 'Company was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  # POST /companies/1/minutes
+  def show_minutes
+    # @company = Company.where(id: params[:id])
+    #
+    # respond_to do |format|
+    #   format.html { redirect_to companies_url, notice: 'Company was successfully destroyed.' }
+    #   format.json { head :no_content }
+    # end
   end
 
   private

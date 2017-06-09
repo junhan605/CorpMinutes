@@ -2,14 +2,14 @@
 
 <h1>Companies</h1>
 
-<div class="panel panel-default">
+<div>
   <div class="panel-body">
     <table class="table table-striped table-condensed table-responsive">
 
       <thead>
         <tr>
           <th>Name</th>
-          <th>Action</th>
+          <th></th>
           <th colspan="3"></th>
         </tr>
       </thead>
@@ -17,7 +17,7 @@
       <tbody>
         <% @companies.each do |company| %>
           <tr>
-            <td><%= link_to company.name, '#' %></td>
+            <td><%= link_to company.name, show_minutes_company_path(company), method: :post %></td>
             <td><%= link_to 'New >>', '#', class: 'btn btn-default btn-xs' %></td>
             <td>
               <%= link_to 'Show', company, class: 'btn btn-default btn-xs' %>
@@ -35,7 +35,7 @@
 <br>
 
 </div>
-  <div class="panel-footer">
+  <div class="panel-body">
     <%= link_to 'New Company', new_company_path, class: "btn btn-success btn-sm" %>
   </div>
 </div>
