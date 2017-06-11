@@ -43,7 +43,7 @@
             </td>
             <td><%= label_tag 'MINUTES' %></td>
             <td><%= label_tag minute.created_at %></td>
-            <td><%= link_to 'DOWNLOAD', '#', class: 'btn btn-default btn-xs' %></td>
+            <td><%= link_to 'DOWNLOAD', download_minute_company_minute_path(minute, :company_id => @company.id ), class: 'btn btn-default btn-xs' %></td>
           </tr>
         <% end %>
       </tbody>
