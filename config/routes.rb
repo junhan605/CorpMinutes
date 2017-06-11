@@ -6,6 +6,11 @@ Rails.application.routes.draw do
   resources :companies
   resources :companies do
     resources :minutes
+    resources :minutes do
+      member do
+        get :download_minute
+      end
+    end
     member do
       post :show_minutes
       get :show_minutes

@@ -55,6 +55,24 @@ class MinutesController < InheritedResources::Base
     end
   end
 
+  def download_minute
+    @minute = Minute.find(params[:id])
+    @company_id = @minute.company_id
+
+    respond_to do |format|
+      format.html 
+      format.pdf do
+        # pdf = Prawn::Document.new
+        rende :pdf =>"BBB.pdf",
+               :disposition => "inline"
+
+        # send_data pdf.render, filename: "#{@minute.name}.pdf",
+        #   type: 'application/pdf'
+
+        # render pdf: "#{@minute.name}.pdf"   # Excluding ".pdf" extension.
+      end
+    end
+  end
 
   private
 

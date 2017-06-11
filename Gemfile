@@ -18,6 +18,9 @@ gem 'activeadmin', '~> 1.0.0.pre4'
 gem 'bootstrap-form'
 gem 'nested_form'
 gem 'simple_form'
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary', github: 'pallymore/wkhtmltopdf-binary-edge', tag: 'v0.12.2'
+gem 'prawn'
 
 group :development, :test do
   gem 'byebug', platform: :mri
