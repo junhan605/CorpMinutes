@@ -1,9 +1,11 @@
 <% index = 0 %>
-<div id="directors">
+<li class="string input optional stringish", id: "directors">
   <%= f.fields_for :directors do |director_form| %>
     <%= director_form.label "Director" %>
-    <%= director_form.text_field :name %>
-    <%= director_form.link_to_remove "remove", :class => "director" %>
+    <%= director_form.text_field :name, style: "width: calc(75% - 22px)" %>
+    <%= director_form.link_to_remove "remove" %>
   <% end %>
-</div>
-<p><%= f.link_to_add "more directors >>", :directors, :class => 'directors' %></p>
+</li>
+<li class="string input optional stringish">
+  <%= f.link_to_add "more directors >>", :directors, :class => 'directors' %>
+</li>
