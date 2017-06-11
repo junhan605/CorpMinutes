@@ -1,7 +1,5 @@
-<div class="director">
-  <p>
-    <%= director_form.label "Director" %>
-    <%= director_form.text_field :name %>
-    <%= director_form.link_to_remove "remove", :class => "director" %>
-  </p>
-</div>
+
+<%= f.label "Director" %>
+<%= f.text_field :name, style: "width: calc(75% - 22px)" %>
+<%= f.input_field :_destroy, as: :hidden %>
+<%= link_to 'Delete', '#', class: 'remove_record' %>
