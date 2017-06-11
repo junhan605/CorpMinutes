@@ -45,8 +45,8 @@ class CompaniesController < ApplicationController
   # PATCH/PUT /companies/1
   # PATCH/PUT /companies/1.json
   def update
-    params[:company][:existing_director_attributes] ||= {}
-    @company = Comapny.find(params[:id])
+    # params[:company][:directors_attributes] ||= {}
+    @company = Company.find(params[:id])
 
     respond_to do |format|
       if @company.update_attributes(company_params)
@@ -87,6 +87,6 @@ class CompaniesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def company_params
-      params.require(:company).permit(:name, :state, :president, :treasure, :secretary ,user_ids: [], director_ids: [])
+      params.require(:company).permit(:name, :state, :president, :treasure, :secretary ,user_ids: [], :directors_attributes => {})
     end
 end

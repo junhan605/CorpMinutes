@@ -1,8 +1,8 @@
-<% index = 0 %>
+<% idx = 0 %>
 <div id="directors">
   <%= f.fields_for :directors do |director_form| %>
-    <% index = index + 1 %>
-    <%= render :partial => 'director', :locals => { :f => f, :director_form => director_form, :index => index } %>
+    <% idx = idx + 1 %>
+    <%= render :partial => 'director', :locals => {:director_form => director_form, :idx => idx } %>
   <% end %>
 </div>
 
