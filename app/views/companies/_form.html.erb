@@ -88,7 +88,6 @@
     <%= f.text_field :secretary %>
   </div>
 
-
   <%= render :partial => 'fields', :locals => { :f => f, :directors => company.directors } %>
 
   <%= f.hidden_field :user_ids, :value => Array[current_user[:id]] %>

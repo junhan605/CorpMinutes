@@ -25,6 +25,14 @@
   <%= @company.secretary %>
 </p>
 
+<p>
+  <% @company.directors.each_with_index do |director, index| %>
+    <p>
+      <strong>Director<%= index + 1 %>:</strong>
+      <%= director.name %>
+    </p>
+  <% end %>
+</p>
 
 <%= link_to 'Edit', edit_company_path(@company) %> |
 <%= link_to 'Back', companies_path %>

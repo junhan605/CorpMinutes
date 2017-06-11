@@ -4,7 +4,11 @@ class CompaniesController < ApplicationController
   # GET /companies
   # GET /companies.json
   def index
-    @companies = current_user.companies
+    if current_user == nil
+      redirect_to destroy_user_session_path
+    else
+      @companies = current_user.companies
+    end
   end
 
   # GET /companies/1
@@ -16,11 +20,19 @@ class CompaniesController < ApplicationController
   def new
     @company = Company.new
     @company.users = Array[current_user]
-    @company.directors.build
+    # @directors = @company.directors
+    # @company.directors.build
+    @company.directors.new
   end
 
   # GET /companies/1/edit
   def edit
+    @company = Company.find(params[:id])
+    @company.users = Array[current_user]
+    @directors = @company.directors
+    if @directors.count == 0
+        @company.directors.new
+    end
   end
 
   # POST /companies
@@ -45,7 +57,7 @@ class CompaniesController < ApplicationController
   # PATCH/PUT /companies/1
   # PATCH/PUT /companies/1.json
   def update
-    # params[:company][:directors_attributes] ||= {}
+    # params[:company][:existing_director_attributes] ||= {}
     @company = Company.find(params[:id])
 
     respond_to do |format|
@@ -87,6 +99,13 @@ class CompaniesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def company_params
-      params.require(:company).permit(:name, :state, :president, :treasure, :secretary ,user_ids: [], :directors_attributes => {})
+      params.require(:company).permit(:name, :state, :president, :treasure, :secretary, user_ids: [], :directors_attributes => Director.attribute_names.map(&:to_sym).push(:_destroy))
+    end
+
+    def set_directors
+      @directors = Directors.where(:company_id => params[:id]).
+         collect do |c|
+          [c.name, c.id]
+         end
     end
 end
