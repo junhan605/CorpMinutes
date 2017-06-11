@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<div class="title_bar" id="title_bar">
+  <div class="titlebar_left">
+    <h1 id="page_title"><%= @company.name %> Minutes</h1>
+    <span class="breadcrumb" style="background: #e4e6e6;">
+      <%= link_to 'Home', "/" %>
+      <span class="breadcrumb_sep">/</span>
+      <%= link_to 'Company', companies_path %>
+      <span class="breadcrumb_sep">/</span>
+      <%= link_to 'Minutes', companies_path %>
+    </span>
+
+  </div>
+
+</div>
+
+<div class="paginated_collection">
+  <div class="paginated_collection_contents">
+    <table class="index_table index">
+      <tbody>
+
+        <thead>
+          <tr>
+            <th class="sortable col col-name">Name</th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <% @minutes.each_with_index do |minute, index| %>
+          <% tr_class = (index % 2) == 0 ? "odd" : "even" %>
+          <tr class=<%= tr_class %> >
+            <td>
+              <div class="field">
+                <label>
+                  <%= check_box_tag "name"%>
+                  <b><%= minute.minute_type %></b>
+                </label>
+              </div>
+
+            </td>
+            <td><%= label_tag 'MINUTES' %></td>
+            <td><%= label_tag minute.created_at %></td>
+            <td><%= link_to 'DOWNLOAD', '#', class: 'btn btn-default btn-xs' %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <div class="action input_action ">
+      <span class="action_item">
+        <%= link_to "ZIP & SAVE", "#", class: "btn btn-default btn-xl" %>
+      </span>
+    </div>
+
+  </div>
+</div>

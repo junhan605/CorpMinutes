@@ -34,10 +34,10 @@
 
       <tbody>
         <% @companies.each_with_index do |company, index| %>
-          <% tr_class = (index % 2) == 0 ? "even" : "odd" %>
-          <tr class=tr_class>
-            <td><%= link_to company.name, show_minutes_company_path(company), method: :post %></td>
-            <td><%= link_to 'New >>', '#', class: 'btn btn-default btn-xs' %></td>
+          <% tr_class = (index % 2) == 0 ? "odd" : "even" %>
+          <tr class=<%= tr_class %> >
+            <td><%= link_to company.name, company_minutes_path(company_id: company) %></td>
+            <td><%= link_to 'New >>', new_company_minute_path(company_id: company), class: 'btn btn-default btn-xs' %></td>
             <td>
               <%= link_to 'Show', company, class: "view_link member_link" %>
               <%= link_to 'Edit', edit_company_path(company), class: "edit_link member_link" %>

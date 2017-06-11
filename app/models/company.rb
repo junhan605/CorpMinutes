@@ -1,11 +1,14 @@
 class Company < ApplicationRecord
   has_and_belongs_to_many :users
   has_many :directors, :dependent => :destroy
+  accepts_nested_attributes_for :directors , :reject_if => lambda { |a| a[:name].blank? }, :allow_destroy => true
+
+  has_many :minutes, :dependent => :destroy
+  accepts_nested_attributes_for :minutes, :reject_if => lambda { |a| a[:minute_type].blank? }, :allow_destroy => true
 
   validates_presence_of :name
   validates_associated :directors
 
-  accepts_nested_attributes_for :directors , :reject_if => lambda { |a| a[:name].blank? }, :allow_destroy => true
 
   # after_update :save_directors
 

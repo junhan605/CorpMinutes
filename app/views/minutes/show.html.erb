@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Minute type:</strong>
+  <%= @minute.minute_type %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @minute.location %>
+</p>
+
+<p>
+  <strong>Other party:</strong>
+  <%= @minute.other_party %>
+</p>
+
+<p>
+  <strong>Escriibe property:</strong>
+  <%= @minute.escriibe_property %>
+</p>
+
+<%= link_to 'Edit', edit_company_minute_path(@minute, company_id: params[:company_id]) %> |
+<%= link_to 'Back', company_minutes_path(company_id: params[:company_id]) %>
