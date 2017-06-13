@@ -15,22 +15,11 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require bootstrap
+//= require bootstrap/modal
 //= require_tree .
 //= require jquery_nested_form
-$(document).on('turbolinks:load', function() {
 
-  $('form').on('click', '.remove_record', function(event) {
-    $(this).prev('input[type=hidden]').val('1');
-    $(this).closest('tr').hide();
-    return event.preventDefault();
-  });
-
-  $('form').on('click', '.add_fields', function(event) {
-    var regexp, time;
-    time = new Date().getTime();
-    regexp = new RegExp($(this).data('id'), 'g');
-    $('.fields').append($(this).data('fields').replace(regexp, time));
-    return event.preventDefault();
-  });
-
+$('a[data-popup]').live('click', function(e) {
+  window.open( $(this).attr('href'), "Popup", "height=600, width=600" );
+  e.preventDefault();
 });

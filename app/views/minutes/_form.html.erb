@@ -1,149 +1,139 @@
-<%= simple_form_for @minute, url: company_minutes_path(@company) do |f| %>
-  <%= f.error_notification %>
-  <div id="main_content_wrapper">
-    <div id="main_content">
-      <fieldset class="inputs">
-        <legend>
-          <span>Minute</span>
-        </legend>
+<div class="modal-dialog">
+  <div class="modal-content">
+    <%= simple_form_for @minute, url: company_minutes_path(@company) do |f| %>
+      <%= f.error_notification %>
+      <div id="main_content_wrapper">
+        <div id="main_content">
+          <fieldset class="inputs">
+            <legend>
+              <span>Minute</span>
+            </legend>
 
-        <ol>
-          <li class="select input optional stringish">
-              <div class="field">
-                <%= f.label :minute_type %>
-                <%= f.select(:minute_type, [
-                    "Adopt Bylaws",
-                    "Amend Bylaws",
-                    "Adopt Corporate Seal",
-                    "Select Accounting Period",
-                    "Agent For Service Of Process",
-                    "Appoint Director",
-                    "Resigning Director",
-                    "Elect Officer",
-                    "Resigning Officer",
-                    "Remove Officer",
-                    "Officer Compensation",
-                    "Officer Bonus",
-                    "Director Compensation",
-                    "Corporate Office",
-                    "Ratify All Actions Of Officers",
-                    "Ratify Specific Action",
-                    "Reimburse Expenses",
-                    "Contracts Prior To Incorporation",
-                    "Annual Meeting",
-                    "Annual Statements",
-                    "Trade Name",
-                    "Sell Real Estate",
-                    "Buy Real Estate",
-                    "Deed",
-                    "Escrow Instructions",
-                    "Title Insurance",
-                    "Prepare Or Execute Documents",
-                    "Sell Asset",
-                    "Buy Asset",
-                    "Acquire Stock",
-                    "Sell Stock",
-                    "Lease Premises As Tenant",
-                    "Lease Premises As Landlord",
-                    "Lease Equipment As Lessee",
-                    "Lease Equipment As Lessor",
-                    "Renew Lease",
-                    "Originate Loan",
-                    "Borrow Money",
-                    "Open Bank Account",
-                    "Authorize Signature For Bank Deposits",
-                    "Authorize Signature For Bank Withdrawal",
-                    "Close Bank Account",
-                    "Line Of Credit",
-                    "Collateralize Asset",
-                    "Credit Card",
-                    "Insurance",
-                    "Assignment",
-                    "Investment Account",
-                    "Sale-Leaseback",
-                    "Guarantee",
-                    "Revoke Signatory Authority",
-                    "Hire Employees",
-                    "Health Care Plan",
-                    "Hire Manager",
-                    "Retain Independent Contractor",
-                    "Share Certificate",
-                    "Issue Shares",
-                    "Declare Dividend",
-                    "Redeem Shares",
-                    "Internal Audit",
-                    "Accountant",
-                    "Attorney",
-                    "In-House Attorney",
-                    "Commence Litigation",
-                    "Defend Litigation",
-                    "Release",
-                    "Indemnification",
-                    "S Election",
-                    "License",
-                    "Adjust Authorized Shares"],
-                  {}, {:style => "font-size: 1.25em;height: 2.25em;"}) %>
-              </div>
+            <ol>
+              <li class="select input optional stringish">
+                  <div class="field" id="select_item">
+                    <%= f.label :minute_type %>
+                    <%= f.select(:minute_type, [
+                        "Adopt Bylaws",
+                        "Amend Bylaws",
+                        "Adopt Corporate Seal",
+                        "Select Accounting Period",
+                        "Agent For Service Of Process",
+                        "Appoint Director",
+                        "Resigning Director",
+                        "Elect Officer",
+                        "Resigning Officer",
+                        "Remove Officer",
+                        "Officer Compensation",
+                        "Officer Bonus",
+                        "Director Compensation",
+                        "Corporate Office",
+                        "Ratify All Actions Of Officers",
+                        "Ratify Specific Action",
+                        "Reimburse Expenses",
+                        "Contracts Prior To Incorporation",
+                        "Annual Meeting",
+                        "Annual Statements",
+                        "Trade Name",
+                        "Sell Real Estate",
+                        "Buy Real Estate",
+                        "Deed",
+                        "Escrow Instructions",
+                        "Title Insurance",
+                        "Prepare Or Execute Documents",
+                        "Sell Asset",
+                        "Buy Asset",
+                        "Acquire Stock",
+                        "Sell Stock",
+                        "Lease Premises As Tenant",
+                        "Lease Premises As Landlord",
+                        "Lease Equipment As Lessee",
+                        "Lease Equipment As Lessor",
+                        "Renew Lease",
+                        "Originate Loan",
+                        "Borrow Money",
+                        "Open Bank Account",
+                        "Authorize Signature For Bank Deposits",
+                        "Authorize Signature For Bank Withdrawal",
+                        "Close Bank Account",
+                        "Line Of Credit",
+                        "Collateralize Asset",
+                        "Credit Card",
+                        "Insurance",
+                        "Assignment",
+                        "Investment Account",
+                        "Sale-Leaseback",
+                        "Guarantee",
+                        "Revoke Signatory Authority",
+                        "Hire Employees",
+                        "Health Care Plan",
+                        "Hire Manager",
+                        "Retain Independent Contractor",
+                        "Share Certificate",
+                        "Issue Shares",
+                        "Declare Dividend",
+                        "Redeem Shares",
+                        "Internal Audit",
+                        "Accountant",
+                        "Attorney",
+                        "In-House Attorney",
+                        "Commence Litigation",
+                        "Defend Litigation",
+                        "Release",
+                        "Indemnification",
+                        "S Election",
+                        "License",
+                        "Adjust Authorized Shares"],
+                      {}, { :style => "font-size: 1.25em;height: 2.25em;"})
+                  %>
+                  <div id='new_minute'>
+
+                  </div>
+                  <script type="text/javascript">
+                    $(document).ready(function() {
+                      console.log("this: ", this);
+                     $("#minute_minute_type").bind("change",function() {
+                       var selected_item = $(this).val();
+                       var file_name = selected_item.split(' ').join('_');
+                       console.log(file_name);
+                       var url_path = "minutes/minute_templates/" + file_name;
+                       console.log(url_path);
+                      $("#new_minute").empty().html('<%= escape_javascript(render(:partial => 'minutes/minute_templates/Adopt_Bylaws')).html_safe %>');
+                     })
+                    })
+                  </script>
+                </div>
+
+              </li>
+            </ol>
+          </fieldset>
+
+          <%= f.hidden_field :company_id, :value => @company.id %>
+          <!-- <fieldset class="actions">
+            <ol>
+              <li class="action input_action">
+                <%= f.button :submit %>
+              </li>
+              <li class="cancel">
+                <%= link_to "Cancel", companies_path %>
+              </li>
+            </ol>
+          </fieldset> -->
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <fieldset class="actions">
+          <ol>
+            <li class="action input_action">
+              <%= f.submit class: "btn btn-primary" %>
             </li>
-          </li>
-
-          <li class="string input optional stringish">
-            <%= f.input :location %>
-          </li>
-
-          <li class="string input optional stringish">
-            <div class="field">
-              <%= f.label :present %>
-            </div>
-          </li>
-
-          <li class="boolean input optional">
-            <div class="field">
-              <label>
-                <%= check_box_tag "michael"%>
-                MICHEAL (PRESIDENT)
-              </label>
-            </div>
-          </li>
-
-          <li class="boolean input optional">
-            <div class="field">
-              <label>
-                <%= check_box_tag "sonny"%>
-                SONNY (TREASURER)
-              </label>
-            </div>
-          </li>
-
-          <li class="boolean input optional">
-            <div class="field">
-              <label>
-                <%= check_box_tag "kim"%>
-                KIM (DIRECTOR)
-              </label>
-            </div>
-          </li>
-
-          <li class="string input optional stringish">
-            <%= f.input :other_party %>
-          </li>
-
-          <li class="string input optional stringish">
-            <%= f.input :escriibe_property %>
-          </li>
-        </ol>
-      </fieldset>
-      <%= f.hidden_field :company_id, :value => @company.id %>
-      <fieldset class="actions">
-        <ol>
-          <li class="action input_action">
-            <%= f.button :submit %>
-          </li>
-          <li class="cancel">
-            <%= link_to "Cancel", companies_path %>
-          </li>
-        </ol>
-      </fieldset>
-    </div>
+            <li class="cancel">
+              <%= link_to "Cancel", "#", class: "btn", data: {dismiss: "modal"} %>
+            </li>
+          </ol>
+        </fieldset>
+      </div>
+    <% end %>
   </div>
-<% end %>
+</div>

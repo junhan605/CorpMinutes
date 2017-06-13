@@ -60,7 +60,7 @@ class MinutesController < InheritedResources::Base
     @company_id = @minute.company_id
 
     respond_to do |format|
-      format.html 
+      format.html
       format.pdf do
         # pdf = Prawn::Document.new
         rende :pdf =>"BBB.pdf",

@@ -1,0 +1,3 @@
+class AdoptbylawsController < ApplicationController
+
+end

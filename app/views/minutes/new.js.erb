@@ -1,0 +1,5 @@
+console.log("Test: ", this);
+var filename = "form";
+
+$("#minutes-modal").html("<%= escape_javascript(render 'form', minute: @minute) %>")
+$("#minutes-modal").modal("show")
